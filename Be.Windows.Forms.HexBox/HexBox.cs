@@ -1767,11 +1767,11 @@ namespace Be.Windows.Forms
             // define the caret width depending on InsertActive mode
             int caretWidth = (this.InsertActive) ? 1 : (int)_charSize.Width;
             int caretHeight = (int)_charSize.Height;
-			NativeMethods.CreateCaret(Handle, IntPtr.Zero, caretWidth, caretHeight);
+			//NativeMethods.CreateCaret(Handle, IntPtr.Zero, caretWidth, caretHeight);
 
 			UpdateCaret();
 
-			NativeMethods.ShowCaret(Handle);
+			//NativeMethods.ShowCaret(Handle);
 
 			_caretVisible = true;
 		}
@@ -1786,7 +1786,7 @@ namespace Be.Windows.Forms
 			long byteIndex =_bytePos - _startByte;
 			PointF p = _keyInterpreter.GetCaretPointF(byteIndex);
 			p.X += _byteCharacterPos*_charSize.Width;
-			NativeMethods.SetCaretPos((int)p.X, (int)p.Y);
+			//NativeMethods.SetCaretPos((int)p.X, (int)p.Y);
 		}
 
 		void DestroyCaret()
@@ -1796,7 +1796,7 @@ namespace Be.Windows.Forms
 
 			System.Diagnostics.Debug.WriteLine("DestroyCaret()", "HexBox");
 
-			NativeMethods.DestroyCaret();
+			//NativeMethods.DestroyCaret();
 			_caretVisible = false;
 		}
 
@@ -1895,7 +1895,7 @@ namespace Be.Windows.Forms
 		/// <param name="m">the message to process.</param>
 		/// <returns>true, if the message was processed</returns>
 		[SecurityPermission(SecurityAction.LinkDemand, UnmanagedCode=true), SecurityPermission(SecurityAction.InheritanceDemand, UnmanagedCode=true)]
-		public override bool PreProcessMessage(ref Message m)
+		/*public override bool PreProcessMessage(ref Message m)
 		{
 			switch(m.Msg)
 			{
@@ -1908,7 +1908,7 @@ namespace Be.Windows.Forms
 				default:
 					return base.PreProcessMessage (ref m);
 			}
-		}
+		}*/
 
 		bool BasePreProcessMessage(ref Message m)
 		{
